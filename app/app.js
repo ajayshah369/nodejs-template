@@ -4,6 +4,8 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 
+require("./sequelize");
+
 const globalErrorHandler = require("./globalErrorHandler");
 const AppError = require("./utilities/appError");
 const routes = require("./routes/routes");
