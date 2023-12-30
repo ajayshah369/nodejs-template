@@ -31,9 +31,7 @@ app.use(cookieParser(process.env.Cookie_Secret, {}));
 
 app.use("/api", routes);
 
-app.use("*", (req, res, next) => {
-  return next(new AppError("Not Found", 404));
-});
+app.use("*", (req, res, next) => next(new AppError("Not Found", 404)));
 
 app.use(globalErrorHandler);
 

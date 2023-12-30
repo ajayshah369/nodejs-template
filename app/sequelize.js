@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const { Sequelize } = require("sequelize");
 
 const config = {
@@ -17,15 +18,15 @@ const sequelize = new Sequelize(
     port: config.port,
     dialect: "postgres",
     pool: {
-      max: parseInt(process.env.Sequelize_Pool_Max) || 5,
+      max: parseInt(process.env.Sequelize_Pool_Max, 10) || 5,
       min: 0,
-      acquire: parseInt(process.env.Sequelize_Pool_Acquire) || 30000,
+      acquire: parseInt(process.env.Sequelize_Pool_Acquire, 10) || 30000,
       idle: 10000
     },
     logging: (sql, queryExecutionTime) => {
       if (
         queryExecutionTime >
-        (parseInt(process.env.Sequelize_Query_TimeLimit) || 1000)
+        (parseInt(process.env.Sequelize_Query_TimeLimit, 10) || 1000)
       ) {
         console.log(
           `Slow query (execution time ${queryExecutionTime} ms): ${sql}`

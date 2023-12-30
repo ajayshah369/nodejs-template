@@ -1,10 +1,11 @@
 /* eslint-disable no-param-reassign */
-const sendErrorDev = (err, req, res) =>
+const sendErrorDev = (err, req, res) => {
   res.status(err.statusCode).json({
     ...err,
     message: err._message || err.message,
     stack: err.stack
   });
+};
 
 const sendErrorProd = (err, req, res) => {
   res.status(err.statusCode).json({

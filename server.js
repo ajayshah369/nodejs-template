@@ -1,5 +1,6 @@
+/* eslint-disable no-console */
 require("dotenv").config({
-  path: `.env${process.env.NODE_ENV !== "production" ? ".local" : ""}`,
+  path: `.env${process.env.NODE_ENV !== "production" ? ".local" : ""}`
 });
 
 const app = require("./app/app");
